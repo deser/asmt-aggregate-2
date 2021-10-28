@@ -1,0 +1,7 @@
+node_modules
+coverage
+.serverless
+.build
+.husky
+.vscode
+.idea
