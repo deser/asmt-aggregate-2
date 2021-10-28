@@ -1,5 +1,6 @@
 import SoccerClient from '@libs/clients/soccer';
 import calculateMaxWin, { MostWin } from '@libs/services/soccer/calculateMaxWin';
+import logger from '@libs/lambdaLogger';
 
 interface AggregateMatchesByYears {
   mostWin: MostWin;
@@ -22,7 +23,9 @@ export default class SoccerService {
 
   async aggregateMatchesByYears(years: string[]): Promise<AggregateMatchesByYears> {
     const promises = years.map((year) => this.soccerClient.getMatches(year));
+    logger.info('starting to get all soccer matches results');
     const resultsForAllYears = (await Promise.all(promises)).flat();
+    logger.info('all soccer matches results received');
 
     return {
       mostWin: calculateMaxWin(resultsForAllYears),

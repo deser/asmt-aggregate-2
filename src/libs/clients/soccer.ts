@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 import promiseRetry from 'promise-retry';
+import logger from '@libs/lambdaLogger';
 
 export interface SoccerMatchesHTTPResponseData {
   homeTeam: string;
@@ -34,8 +35,12 @@ export default class SoccerClient {
     // Therefore I decided to do best effort to get data eventually
     return promiseRetry<SoccerMatchesHTTPSuccessfulResponse>(
       async () => {
+        logger.info('getting soccer match results for year', { year });
         const { data } = await this.axiosClient.get<SoccerMatchesHTTPResponse>(`/${year}`);
-        if ('errorCode' in data) throw new Error('Response is erroneous');
+        if ('errorCode' in data) {
+          logger.info('getting soccer match results for year failed. Retrying', { year, responseData: data });
+          throw new Error('Response is erroneous');
+        }
 
         return data;
       },
