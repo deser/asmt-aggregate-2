@@ -44,11 +44,6 @@ module.exports = {
       { selector: 'variable', format: ['camelCase', 'UPPER_CASE', 'PascalCase'] },
     ],
     'dot-notation': 'error',
-    // disallow importing axios directly despite types from it
-    "no-restricted-syntax": [ "error", {
-      "selector": "ImportDeclaration[importKind!='type'][source.value='axios']",
-      "message": "Please use clients from serverless-tools instead."
-    }],
     'no-console': 'error',
     '@typescript-eslint/no-empty-function': 0,
     '@typescript-eslint/no-var-requires': 0,

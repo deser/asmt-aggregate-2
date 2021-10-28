@@ -1,10 +1,8 @@
-
-
 /* eslint-disable no-template-curly-in-string */
 
 import type { AWS } from '@serverless/typescript';
 
-import { hello } from '@functions/index';
+import functionDefinitions from '@functions/index';
 
 const serverlessConfiguration: AWS = {
   service: 'aggregator',
@@ -37,7 +35,7 @@ const serverlessConfiguration: AWS = {
     lambdaHashingVersion: '20201221',
   },
   // import the function via paths
-  functions: { hello },
+  functions: { ...functionDefinitions },
 };
 
 module.exports = serverlessConfiguration;
