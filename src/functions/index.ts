@@ -1,18 +1,19 @@
+import { AWS } from '@serverless/typescript';
 import { handlerPath } from '@libs/handlerResolver';
 
-export default {
+const functions: AWS['functions'] = {
   aggregateSoccerMatches: {
-    handler: `${handlerPath(__dirname)}/hello/aggregateSoccerMatches.default`,
+    handler: `${handlerPath(__dirname)}/aggregateSoccerMatches/handler.default`,
     events: [
       {
         http: {
           method: 'get',
           path: '/aggregate',
-          environment: {
-            SOCCER_MATCHES_API_BASE_URL: 'http://ase.asmt.live:8000/soccer',
-          },
         },
       },
     ],
+    timeout: 15,
   },
 };
+
+export default functions;

@@ -31,6 +31,7 @@ const serverlessConfiguration: AWS = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
+      SOCCER_MATCHES_API_BASE_URL: 'http://ase.asmt.live:8000/soccer',
     },
     lambdaHashingVersion: '20201221',
   },

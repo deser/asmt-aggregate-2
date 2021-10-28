@@ -1,4 +1,4 @@
-export const pathParams = {
+export const queryStringParameters = {
   type: 'object',
   properties: {
     years: { type: 'string' },
