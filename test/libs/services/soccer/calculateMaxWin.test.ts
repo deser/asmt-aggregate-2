@@ -545,8 +545,12 @@ const data = [
   },
 ];
 
-describe('1', () => {
-  test('2', () => {
-    console.log(calculateMaxWin(data));
+describe('calculate max wins among teams', () => {
+  test('should return correctly calculated max win value', () => {
+    expect(calculateMaxWin(data)).toEqual({ team: 'Serbia', amount: 7 });
+  });
+
+  test('should handle empty data argument', () => {
+    expect(calculateMaxWin([])).toEqual({ team: 'no team', amount: 0 });
   });
 });
