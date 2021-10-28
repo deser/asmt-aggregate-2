@@ -1,8 +1,29 @@
-# Serverless - AWS Node.js Typescript
+# Aggregator service
 
 This project has been generated using the `aws-nodejs-typescript` template from the [Serverless framework](https://www.serverless.com/).
 
 For detailed instructions, please refer to the [documentation](https://www.serverless.com/framework/docs/providers/aws/).
+
+## API
+
+### GET /aggregate
+
+Description: aggregates soccer match results by years <br>
+Query params:
+
+- years: string (numbers delimited by ',')
+
+Usage examples:
+<br>Correct
+
+- `/aggregate?years=2000`
+- `/aggregate?years=2000,2002`
+
+<br>Incorrect
+
+- `/aggregate`
+- `/aggregate?years=`
+- `/aggregate?years=hellokitty`
 
 ## Installation/deployment instructions
 

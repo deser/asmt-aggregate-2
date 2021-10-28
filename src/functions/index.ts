@@ -8,7 +8,7 @@ const functions: AWS['functions'] = {
       {
         http: {
           method: 'get',
-          path: '/aggregate',
+          path: '/v1/aggregate',
         },
       },
     ],
